@@ -1,25 +1,28 @@
 #!/usr/bin/env bash
-#250929-1235
-clear
-appimages_dir="appimages"
-echo This setup script will create directory \"${appimages_dir}\" in your home directory
-read -p "Type \"yes\" to procede: " user_response
-if [ "${user_response}x" != "yesx" ]; then
-   exit
+
+# Constants
+readonly APPIMAGES_DIR="appimages"
+readonly APPIMAGETOOL_URL="https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
+
+# Welcome message and prompt user for confirmation
+echo "This setup script will create directory \"${APPIMAGES_DIR}\" in your home directory."
+read -p "Type \"yes\" to proceed: " user_response
+if [[ "${user_response,,}" != "yes" ]]; then
+    echo "Exiting..."
+    exit 1
 fi
 
-cd
-echo mkdir -p "${appimages_dir}"
-set -x
-mkdir -p "${appimages_dir}"
-exit
+# Create the directory and change to it
+mkdir -p "${HOME}/${APPIMAGES_DIR}" && cd "${HOME}/${APPIMAGES_DIR}" || { echo "Failed to create or access directory."; exit 1; }
 
-cd ${appimages_dir}
-echo Getting appimagetool-x86_64.AppImage
-wget https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage
-echo chmod +x appimagetool-x86_64.AppImage
-echo Installing zsync
-sudo apt-get install zsync
+# Download appimagetool-x86_64.AppImage
+echo "Getting appimagetool-x86_64.AppImage"
+wget -q "${APPIMAGETOOL_URL}" || { echo "Failed to download AppImage."; exit 1; }
+chmod +x appimagetool-x86_64.AppImage
 
+# Install zsync
+echo "Installing zsync"
+sudo apt-get install -y zsync || { echo "Failed to install zsync."; exit 1; }
 
-#app_dir="${appimages_dir}/APP"
+# Success message
+echo "Setup completed successfully."
