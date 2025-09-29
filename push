@@ -1,3 +1,18 @@
+git pull --rebase  # Ensure your branch is up to date
+git push origin HEAD:main
 git add .
 git commit -m "Update"
-git push origin main
+git push origin main --force
+
+#git push origin HEAD:main
+
+
+exit
+git add .
+git commit -m "Committing local changes before force push"
+git push origin main --force
+
+
+Your branch and 'origin/main' have diverged,
+and have 1 and 1 different commits each, respectively.
+  (use "git pull" to merge the remote branch into yours)
