@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Constants
-readonly APPIMAGES_DIR="appimages"
+readonly APPIMAGES_DIR="appimages1"
 readonly APPIMAGETOOL_URL="https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
 
 # Welcome message and prompt user for confirmation
