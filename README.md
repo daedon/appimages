@@ -3,7 +3,7 @@ create_appimage - A Bash script to simplify the creation of appimages.
 HOW TO
 
 SETUP
-1. Run setup.sh
+1. Run install.sh
    This will download appimagetool-x86_64 and install zsync
 
 CREATING AN APPIMAGE FILE

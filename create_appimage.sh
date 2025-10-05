@@ -4,9 +4,11 @@ if [[ $# -ne 0 ]]; then
    exit 1
 fi
 
-appimages_dir="${HOME}/appimages"
+# Get ${APPIMAGES_DIR} as set by install.sh
+source config.sh
+echo APPIMAGES_DIR is ${APPIMAGES_DIR}
 
-cd ${appimages_dir}/APP
+cd ${APPIMAGES_DIR}/APP
 files_in_APP=$(find . -maxdepth 1 -type f -iname "*" | wc -l)
 if [[ ${files_in_APP} -ne 1 ]]; then
    echo "ERROR: Expected one file in APP directory, found ${files_in_APP} files."
@@ -17,8 +19,8 @@ fi
 
 app_name=`ls -1 * | head -1`
 echo App anme is ${app_name}
-cd ..
 
+cd ${APPIMAGES_DIR}
 mkdir -p ${app_name}/usr/bin
 cp APP/${app_name} ${app_name}/usr/bin
 chmod +x ${app_name}/usr/bin/${app_name}
@@ -34,10 +36,10 @@ echo "Exec=${app_name}"     >>${app_name}/${app_name}.desktop
 echo "Icon=${app_name}"     >>${app_name}/${app_name}.desktop
 echo "Categories=Utility;" >>${app_name}/${app_name}.desktop
 
-if [[ -f ICON/${app_name}.png ]]; then
-   cp ICON/${app_name}.png ${app_name}
+if [[ -f ICONS/${app_name}.png ]]; then
+   cp ICONS/${app_name}.png ${app_name}
 else
-   cp ICON/appimage_icon.png ${app_name}/${app_name}.png
+   cp ICONS/appimage_icon.png ${app_name}/${app_name}.png
 fi
 
 ARCH=x86_64 ./appimagetool-x86_64.AppImage ${app_name} ${app_name}.AppImage

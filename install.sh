@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # Constants
-APPIMAGES_DIR="appimages"
+APPIMAGES_DIR=`pwd`
+echo APPIMAGES_DIR=${APPIMAGES_DIR}
+echo APPIMAGES_DIR=\"${APPIMAGES_DIR}\" >config.sh
+
 APPIMAGETOOL_URL="https://github.com/AppImage/appimagetool/releases/download/continuous/appimagetool-x86_64.AppImage"
 
 # Download appimagetool-x86_64.AppImage
