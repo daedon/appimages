@@ -1,6 +1,6 @@
 create_appimage - A Bash script to simplify the creation of appimages.
 
-HOW TO
+How-to:
 1. Place your executable application in the APP directory.
    Place your app's icon in the ICON directory.
    - If no icon matches your app's name, the appimage icon will be used.
