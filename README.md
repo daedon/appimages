@@ -1,12 +1,18 @@
 create_appimage - A Bash script to simplify the creation of appimages.
 
 HOW TO
-1. Place your executable application in the APP directory.
-   Place your app's icon in the ICON directory.
+
+SETUP
+1. Run setup.sh
+   This will download appimagetool-x86_64 and install zsync
+
+CREATING AN APPIMAGE FILE
+1. Place your executable application in the appimages/APP directory.
+   Place your app's icon in the appimages/ICON directory.
    - If no icon matches your app's name, the appimage icon will be used.
 2. Run `create_appimage.sh`
 
-Running `create_appimage` will:
+`create_appimage` will:
 - Copy your application from `APP/your_app_name` to `your_app_name/usr/bin`.
 - Copy the application icon from `APP/your_app_name` to `your_app_name/usr/bin`.
 - Create your_app_name.desktop.
