@@ -6,7 +6,6 @@ fi
 
 # Get ${APPIMAGES_DIR} as set by install.sh
 source config.sh
-echo APPIMAGES_DIR is ${APPIMAGES_DIR}
 
 cd ${APPIMAGES_DIR}/APP
 files_in_APP=$(find . -maxdepth 1 -type f -iname "*" | wc -l)
